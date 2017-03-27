@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript">
+function checknum(){
+ var date = ['1','2','3','4','5','6','7','8','9','0'];
+ var code ="";
+ for(var i = 0; i<4; i++){
+    var index = Math.floor(Math.random()*date.length);   
+    code+=date[index];
+    }
+    var spanNode = document.getElementById("span1");
+	spanNode.innerHTML=code;
+	spanNode.style.fontSize="50px";
+	spanNode.style.backgroundColor="gray";
+	spanNode.style.textDecoration="line-through";
+}
+
+function getload()
+{
+	checknum();
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body onload="getload()">
+ <span id="span1" onclick="checknum()"></span><a href="" onclick="checknum()">看不清，换一张</a>
+</body>
+</html>
