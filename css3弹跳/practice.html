@@ -1,0 +1,143 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>纯css3 click动效，炫酷导航-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+.right-box {
+	width:600px;
+	margin:0 auto;
+}
+.service.active {
+	border-color:red;
+}
+.service {
+	width:30%;
+	height:240px;
+	text-align:center;
+	border:1px solid #947a35;
+	float:left;
+	background:rgba(121,85,72,0.5);
+	margin-right:4.5%;
+	margin-bottom:7.5%;
+	-webkit-transition:all 0.3s ease;
+	transition:all 0.3s ease;
+	cursor:pointer;
+}
+.service .icon-holder {
+	position:relative;
+	top:40px;
+	display:inline-block;
+	margin-bottom:0px;
+	-webkit-transition:all 0.3s ease;
+	transition:all 0.3s ease;
+	font-size:50px;
+	color:#f2f2f2;
+	width:50px;
+	height:50px;
+	background:blue;
+}
+.service.active .icon-holder {
+	top:-30px;
+	color:#d3bc82;
+}
+.service .heading {
+	font-size:24px;
+	position:relative;
+	font-weight:normal;
+	top:60px;
+	color:#fff;
+	-webkit-transition:all 600ms cubic-bezier(0.68,-0.55,0.265,1.55);
+	transition:all 600ms cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+.service.active .heading {
+	top:-22px;
+}
+.service.active .description {
+	opacity:1;
+	-webkit-transform:scale(1);
+	-ms-transform:scale(1);
+	transform:scale(1);
+}
+.service .description {
+	width:80%;
+	margin:0 auto;
+	margin-top:-20px;
+	opacity:1;
+	-webkit-transition:all 600ms cubic-bezier(0.68,-0.55,0.265,1.55);
+	transition:all 600ms cubic-bezier(0.68,-0.55,0.265,1.55);
+	-webkit-transform:scale(0);
+	-ms-transform:scale(0);
+	transform:scale(0);
+}
+.description .txt {
+	font-size:16px;
+	color:#fff;
+	display:inline-block;
+	width:100%;
+	line-height:40px;
+	border:none;
+}
+.description .txt a {
+	color:#fff;
+	text-decoration:none;
+}
+</style>
+</head>
+<body>
+<div class="right-box">
+    <div class="service">
+        <div class="icon-holder"> </div>
+        <h3 class="heading">价格</h3>
+        <div class="description">
+            <div class="txt"><a href="list.html">0元-90.00元</a></div>
+            <div class="txt"><a href="list.html">0元-90.00元</a></div>
+            <div class="txt"><a href="list.html">0元-90.00元</a></div>
+        </div>
+    </div>
+    <div class="service">
+        <div class="icon-holder"> </div>
+        <h3 class="heading">色系</h3>
+        <div class="description">
+            <div class="txt">偏黄</div>
+            <div class="txt">偏棕</div>
+            <div class="txt">红色</div>
+        </div>
+    </div>
+    <div class="service">
+        <div class="icon-holder"></div>
+        <h3 class="heading">风格</h3>
+        <div class="description">
+            <div class="txt">现代简约</div>
+            <div class="txt">欧式风格</div>
+            <div class="txt">复古风格</div>
+        </div>
+    </div>
+    <div class="service">
+        <div class="icon-holder"> </div>
+        <h3 class="heading">空间</h3>
+        <div class="description">
+            <div class="txt">客厅</div>
+            <div class="txt">厨房</div>
+            <div class="txt">卧室</div>
+        </div>
+    </div>
+    <div class="service">
+        <div class="icon-holder"></div>
+        <h3 class="heading">工艺</h3>
+        <div class="description">
+            <div class="txt">仿古</div>
+            <div class="txt">平面</div>
+            <div class="txt">锯齿纹</div>
+        </div>
+    </div>
+
+</div><script>
+$(function() {
+    $(".service").click(function() {
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+})</script>
+</body>
+</html>
