@@ -1,0 +1,263 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>京东图片轮播-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<style>
+@charset "utf-8";
+	/* CSS Document */
+* {
+	margin:0;
+	padding:0;
+	font-family:微软雅黑;
+	font-size:24px;
+}
+/*框*/
+.div01 {
+	width:500px;
+	height:300px;
+	position:absolute;
+	overflow:hidden;
+}
+/*照片框*/
+.div02 {
+	width:calc(500px*8);
+	height:300px;
+	position:absolute;
+	z-index:5;
+}
+.slideimg {
+	display:none;
+}
+.cimg {
+	display:block;
+}
+/*左右键*/
+.abt {
+	display:block;
+	width:30px;
+	height:60px;
+	z-index:9;
+	opacity:0.3;
+	line-height:60px;
+	text-align:center;
+	background-color:gray;
+	color:white;
+}
+#lefta {
+	position:absolute;
+	left:0px;
+	top:40%;
+}
+#righta {
+	position:absolute;
+	right:0px;
+	top:40%;
+}
+.abt:hover {
+	opacity:0.6;
+	cursor:pointer;
+}
+/**/
+#slideblock {
+	padding:3px 3px;
+	z-index:20;
+	border-radius:8px;
+	position:absolute;
+	left:25%;
+	bottom:20px;
+	width:213px;
+	height:12px;
+	background-color:#eaeaea;
+	opacity:0.8;
+}
+#slideblock ol {
+	list-style:none;
+	float:left;
+	width:12px;
+	height:12px;
+	margin-left:13px;
+	border-radius:100%;
+	background-color:white;
+}
+#slideblock ol.selected {
+	background-color:red;
+}
+</style>
+</head>
+<body>
+<div class="div01">
+	<div class="div02">
+    	<img id="img1" class="slideimg cimg" src="http://www.jq22.com/img/cs/500x300.png"/>        
+        <img id="img2" class="slideimg" src="http://www.jq22.com/img/cs/500x300a.png"/>        
+        <img id="img3" class="slideimg" src="http://www.jq22.com/img/cs/500x300b.png"/>        
+        <img id="img4" class="slideimg" src="http://www.jq22.com/img/cs/500x300c.png"/>        
+        <img id="img5" class="slideimg" src="http://www.jq22.com/img/cs/500x300d.png"/>        
+        <img id="img6" class="slideimg" src="http://www.jq22.com/img/cs/500x300.png"/>        
+        <img id="img7" class="slideimg" src="http://www.jq22.com/img/cs/500x300a.png"/>        
+        <img id="img8" class="slideimg" src="http://www.jq22.com/img/cs/500x300b.png"/>       
+    </div>
+    <a id="lefta" class="abt">＜</a>
+    <a id="righta" class="abt">＞</a>
+    <div id="slideblock">
+        <ul>
+            <ol id="c1" class="selected"></ol>
+            <ol id="c2" ></ol>
+            <ol id="c3" ></ol>
+            <ol id="c4" ></ol>
+            <ol id="c5" ></ol>
+            <ol id="c6" ></ol>
+            <ol id="c7" ></ol>                                                                        
+            <ol id="c8" ></ol>
+        </ul>
+    </div>
+</div><script>
+$(document).ready(function() {
+
+    $("#righta").click( //为#lefta绑定了鼠标点击事件处理  
+        function() {
+            //$("XXXXX").attr("id")取标记属性
+            var tid = $(".selected").attr("id");
+            if (tid == "c1") {
+                $("#c1").removeClass("selected");
+                $("#img1").removeClass("cimg");
+                $("#c2").addClass("selected");
+                $("#img2").addClass("cimg");
+            }
+            if (tid == "c2") {
+                $("#c2").removeClass("selected");
+                $("#img2").removeClass("cimg");
+                $("#c3").addClass("selected");
+                $("#img3").addClass("cimg");
+            }
+            if (tid == "c3") {
+                $("#c3").removeClass("selected");
+                $("#img3").removeClass("cimg");
+                $("#c4").addClass("selected");
+                $("#img4").addClass("cimg");
+            }
+            if (tid == "c4") {
+                $("#c4").removeClass("selected");
+                $("#img4").removeClass("cimg");
+                $("#c5").addClass("selected");
+                $("#img5").addClass("cimg");
+            }
+            if (tid == "c5") {
+                $("#c5").removeClass("selected");
+                $("#img5").removeClass("cimg");
+                $("#c6").addClass("selected");
+                $("#img6").addClass("cimg");
+            }
+            if (tid == "c6") {
+                $("#c6").removeClass("selected");
+                $("#img6").removeClass("cimg");
+                $("#c7").addClass("selected");
+                $("#img7").addClass("cimg");
+            }
+            if (tid == "c7") {
+                $("#c7").removeClass("selected");
+                $("#img7").removeClass("cimg");
+                $("#c8").addClass("selected");
+                $("#img8").addClass("cimg");
+            }
+            if (tid == "c8") {
+                $("#c8").removeClass("selected");
+                $("#img8").removeClass("cimg");
+                $("#c1").addClass("selected");
+                $("#img1").addClass("cimg");
+            }
+        }
+    );
+
+
+    $("#lefta").click( //为#lefta绑定了鼠标点击事件处理  
+        function() {
+            //$("XXXXX").attr("id")取标记属性
+            var tid = $(".selected").attr("id");
+            if (tid == "c1") {
+                $("#c1").removeClass("selected");
+                $("#img1").removeClass("cimg");
+                $("#c8").addClass("selected");
+                $("#img8").addClass("cimg");
+            }
+            if (tid == "c8") {
+                $("#c8").removeClass("selected");
+                $("#img8").removeClass("cimg");
+                $("#c7").addClass("selected");
+                $("#img7").addClass("cimg");
+            }
+            if (tid == "c7") {
+                $("#c7").removeClass("selected");
+                $("#img7").removeClass("cimg");
+                $("#c6").addClass("selected");
+                $("#img6").addClass("cimg");
+            }
+            if (tid == "c6") {
+                $("#c6").removeClass("selected");
+                $("#img6").removeClass("cimg");
+                $("#c5").addClass("selected");
+                $("#img5").addClass("cimg");
+            }
+            if (tid == "c5") {
+                $("#c5").removeClass("selected");
+                $("#img5").removeClass("cimg");
+                $("#c4").addClass("selected");
+                $("#img4").addClass("cimg");
+            }
+            if (tid == "c4") {
+                $("#c4").removeClass("selected");
+                $("#img4").removeClass("cimg");
+                $("#c3").addClass("selected");
+                $("#img3").addClass("cimg");
+            }
+            if (tid == "c3") {
+                $("#c3").removeClass("selected");
+                $("#img3").removeClass("cimg");
+                $("#c2").addClass("selected");
+                $("#img2").addClass("cimg");
+            }
+            if (tid == "c2") {
+                $("#c2").removeClass("selected");
+                $("#img2").removeClass("cimg");
+                $("#c1").addClass("selected");
+                $("#img1").addClass("cimg");
+            }
+        }
+    );
+
+
+    //setInterval('$( "#righta" ).click()',2000);
+
+    $("#divslide").mouseenter( // hover 动作=mouseenter + mouseleave两个动作
+        function() {
+            $("#lefta").css("display", "inline-block");
+            $("#righta").css("display", "inline-block");
+        }
+    );
+
+    $("#divslide").mouseleave(
+        function() {
+            //alert('r');
+            $("#lefta").css("display", "none");
+            $("#righta").css("display", "none");
+        }
+    );
+
+    $("#righta").mouseenter( // hover 动作=mouseenter + mouseleave两个动作
+        function() {
+            $("#lefta").css("display", "inline-block");
+            $("#righta").css("display", "inline-block");
+        }
+    );
+
+    $("#lefta").mouseenter( // hover 动作=mouseenter + mouseleave两个动作
+        function() {
+            $("#lefta").css("display", "inline-block");
+            $("#righta").css("display", "inline-block");
+        }
+    );
+
+});</script>
+</body>
+</html>
