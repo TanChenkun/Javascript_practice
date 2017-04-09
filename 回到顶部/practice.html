@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>回到顶部（原创）-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+#box {
+	margin:0 auto;
+	width:70%;
+	height:3000px;
+	background-color:rgba(247,247,247,1.00);
+}
+.top {
+	overflow:hidden;
+	width:100px;
+	height:100px;
+	left:84.8%;
+	top:45%;
+	position:relative;
+}
+.top_img {
+	position:relative;
+	bottom:0px;
+}
+h1 {
+	text-align:center;
+	line-height:800px
+}
+</style>
+</head>
+<body>
+<!-- html start -->
+<div id="top"><!-- 顶部定位 --> 
+</div>
+
+<!-- 回到顶部代码 -->
+<div class="top"> <!--  回到顶部按钮  --> 
+  <a href="#top"> <img src="http://www.jq22.com/tp/bf7dcf48-9b88-437b-bdce-5526dc84faec.png"   class="top_img"> </a> </div>
+<!-- 回到顶部代码 结束-->
+<div id="box"> <!-- 主边框 -->
+  <h1>1</h1>
+  <h1>2</h1>
+  <h1>3</h1>
+  <h1>4</h1>
+  <h1>5</h1>
+  <h1>6</h1>
+</div>
+<!-- html end --> <script>
+var m_top = 300;
+var m_scrolltop = 0;
+var speed = 0.5;
+$(".top").stop(true, false).animate({
+    top: '100px'
+}, "100"); //改变css bottom
+
+$(document).scroll(function() {
+    var stop = parseInt($(document).scrollTop());
+    $(".top").stop(true, false).animate({
+        top: stop + 100 + 'px'
+    }, "100"); //改变css bottom
+})
+var bottom = 0;
+var t_mover;
+var t_out;
+$(".top").mouseover(function() {
+    clearInterval(t_out);
+    m_over();
+});
+$(".top").mouseout(function() {
+    clearInterval(t_mover);
+    m_out();
+});
+
+function m_over() {
+    t_mover = setInterval(function() {
+        bottom = bottom + 100; //每次加100 是图片的高度
+        if (bottom > 1000) //循环400-1000的高度。眨眼睛
+            bottom = 400;
+        $(".top_img").css('bottom', bottom + 'px'); //改变css bottom
+    }, 100); //使用字符串执行方法 
+    return bottom;
+}
+
+function m_out() {
+    t_out = setInterval(function() {
+        if (bottom < 100) { //小于等于0的时候停止
+            clearInterval(t_out);
+        } else
+            bottom = bottom - 100; //每次- 100 是图片的高度
+        $(".top_img").css('bottom', bottom + 'px');
+    }, 50); //使用字符串执行方法 
+    return bottom;
+}</script>
+</body>
+</html>
