@@ -1,0 +1,136 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>进度条（按比例双向数据滑块 兼容所以pc和移动端 可拖动）-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+#box_ {
+	position:relative;
+	width:200px;
+	height:50px;
+	border:1px solid transparent;
+	float:left;
+}
+#bg_ {
+	height:10px;
+	margin-top:11px;
+	border:1px solid #ddd;
+	border-radius:5px;
+	overflow:hidden;
+}
+#bgcolor_ {
+	background:#f3f3f3;
+	width:100px;
+	height:10px;
+	border-radius:5px;
+}
+#bt_ {
+	width:17px;
+	height:17px;
+	background-color:rgb(243,243,243);
+	border-radius:17px;
+	overflow:hidden;
+	position:absolute;
+	left:100px;
+	margin-left:-12px;
+	border:1px solid #d0cbcb;
+	top:8px;
+	cursor:pointer;
+}
+#text_xa_ {
+	width:100px;
+	margin:0 auto;
+	font-size:14px;
+	padding-left:10px;
+	padding-top:2px;
+	line-height:2em;
+	float:left;
+}
+#text_xa {
+	width:100px;
+	margin:0 auto;
+	font-size:14px;
+	padding-left:10px;
+	padding-top:2px;
+	line-height:2em;
+	float:left;
+}
+</style>
+</head>
+<body>
+<div>
+    <div style="width:100%;" class="abgs_a">
+        <form class="form-horizontal col-sm-12" role="form">
+            <div class="form-group label_a div_left">
+                <div class="col-sm-4 col-xs-9">
+                    <div id="text_xa_">安卓:50%</div>
+                    <div id="box_">
+                        <div id="bg_">
+                            <div id="bgcolor_"></div>
+                        </div>
+                        <div id="bt_"></div>
+                    </div>
+                    <div id="text_xa">苹果:50%</div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div><script>
+// 进度条2
+$(window).ready(function jindu($) {
+    var $box = $('#box_');
+    var $bg = $('#bg_');
+    var $bgcolor = $('#bgcolor_');
+    var $btn = $('#bt_');
+    var $text = $('#text_xa_');
+    var $text_xa = $('#text_xa');
+    var statu = false;
+    var ox = 0;
+    var lx = 0;
+    var left = 100;
+    var bgleft = 0;
+    $btn.mousedown(function(e) {
+        lx = $btn.offset().left;
+        ox = e.pageX - left;
+        statu = true;
+    });
+    $(document).mouseup(function() {
+        statu = false;
+    });
+    $box.mousemove(function(e) {
+        if (statu) {
+            left = e.pageX - ox;
+            if (left < 0) {
+                left = 0;
+            }
+            if (left > 200) {
+                left = 200;
+            }
+            $btn.css('left', left);
+            $bgcolor.width(left);
+            $text.html('安卓:' + parseFloat(left / 2).toFixed(2) + '%');
+            $text_xa.html('苹果:' + parseFloat(100 - (left / 2)).toFixed(2) + '%');
+        }
+    });
+    $bg.click(function(e) {
+        if (!statu) {
+            bgleft = $bg.offset().left;
+            left = e.pageX - bgleft;
+            if (left < 0) {
+                left = 0;
+            }
+            if (left > 200) {
+                left = 200;
+            }
+            $btn.css('left', left);
+            $bgcolor.stop().animate({
+                width: left
+            }, 200);
+            $text.html('安卓:' + parseFloat(left / 2).toFixed(2) + '%');
+            $text_xa.html('苹果:' + parseFloat(100 - (left / 2)).toFixed(2) + '%');
+        }
+    });
+})</script>
+</body>
+</html>
