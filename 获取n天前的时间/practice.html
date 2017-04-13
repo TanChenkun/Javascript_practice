@@ -1,0 +1,101 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>获取前几天时间值-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<style>
+</style>
+</head>
+<body>
+<script>
+document.write("当前时间的36天前为：" + getNowFormatDate(36));
+
+function getNowFormatDate(s) {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    var shi = date.getHours();
+    var fen = date.getMinutes();
+    var miao = date.getSeconds();
+    var nian = date.getFullYear();
+    var sjif = strDate - s;
+    if (sjif > 0) {
+
+        strDate = sjif
+    } else {
+        var i = 1;
+        sjif = sjif - sjif * 2 // 80
+
+        //构造一个日期对象：
+        var sgy = month - i;
+        if (sgy <= 0) {
+            sgy = sgy - sgy * 2;
+            sgy = 12 - sgy;
+        }
+        if (s >= 365) {
+            nian = nian - 1;
+        }
+        var day = new Date(date.getFullYear(), sgy, 0);
+        //获取天数：
+        var daycount = day.getDate();
+        var yfif = daycount - sjif; // 31 - 80 = -49
+
+        if (yfif > 0) {
+
+            strDate = yfif;
+
+            month = sgy;
+
+        } else {
+            dkbl()
+        }
+
+
+
+        function dkbl() {
+            i++;
+            yfif = yfif - yfif * 2 // 49 -21 
+            //构造一个日期对象：
+            sgy = month - i;
+            if (sgy <= 0) {
+                sgy = sgy - sgy * 2;
+                sgy = 12 - sgy;
+            }
+            var day = new Date(date.getFullYear(), sgy, 0);
+            //获取天数：
+            var daycount = day.getDate(); // 28
+            yfif = daycount - yfif; // -21
+            if (yfif > 0) {
+                strDate = yfif;
+                month = sgy;
+            } else {
+                dkbl()
+            }
+        }
+    }
+
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    if (shi >= 0 && shi <= 9) {
+        shi = "0" + shi;
+    }
+    if (fen >= 0 && fen <= 9) {
+        fen = "0" + fen;
+    }
+    if (miao >= 0 && miao <= 9) {
+        miao = "0" + miao;
+    }
+    var currentdate = nian + seperator1 + month + seperator1 + strDate +
+        " " + shi + seperator2 + fen +
+        seperator2 + miao;
+    return currentdate;
+}</script>
+</body>
+</html>
