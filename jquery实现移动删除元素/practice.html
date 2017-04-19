@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)file:///C:/Users/Tan.Ck/Downloads/jq22378.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>jQuery实现元素的上移下移删除-jq22.com</title>
+<script src="./jQuery实现元素的上移下移删除-jq22.com_files/jquery.min.js.下载"></script>
+<style>
+ul li {
+	width:120px;
+	line-height:30px;
+	list-style:none;
+}
+ul .on {
+	background:#eee;
+}
+div a {
+	display:block;
+	width:80px;
+	height:30px;
+	line-height:30px;
+	border:1px solid #ccc;
+	color:#333;
+	text-align:center;
+}
+</style>
+</head>
+<body>
+<ul>
+    <li class="" data-order="1">01 <span>粮油</span></li>
+    <li data-order="2">02 <span>酒类</span></li>
+    <li data-order="3">03 <span>洗护</span></li>
+    <li data-order="4">04 <span>食品</span></li>
+</ul>
+<div>
+    <a href="javascript:;" class="btn1">上移</a>
+    <a href="javascript:;" class="btn2">下移</a>
+    <a href="javascript:;" class="btn3">删除</a>
+</div><script>
+$(function() {
+    $('ul li').on('click', function() {
+        $(this).toggleClass('on').siblings().removeClass('on');
+    });
+
+    /*上移*/
+    $('.btn1').on('click', function() {
+        var txt = $('ul .on').children('span').html();
+        var txt1 = $('ul .on').prev().children('span').html();
+        var prev = $('ul .on').prev();
+        if ($('ul .on').length == 1) {
+            if (prev.length) {
+                $('ul .on').children('span').html(txt1);
+                prev.children('span').html(txt);
+                prev.addClass('on').siblings().removeClass('on');
+            } else {
+                alert('已经在最顶端了');
+            };
+        } else {
+            alert('请选择要上移的元素');
+        };
+    });
+
+    /*下移*/
+    $('.btn2').on('click', function() {
+        var txt = $('ul .on').children('span').html();
+        var txt1 = $('ul .on').next().children('span').html();
+        var next = $('ul .on').next();
+        if ($('ul .on').length == 1) {
+            if (next.length) {
+                $('ul .on').children('span').html(txt1);
+                next.children('span').html(txt);
+                next.addClass('on').siblings().removeClass('on');
+            } else {
+                alert('已经在最底端了');
+            };
+        } else {
+            alert('请选择要下移的元素');
+        };
+    });
+
+    /*删除*/
+    $('.btn3').on('click', function() {
+        if ($('ul .on').length == 1) {
+            $('ul .on').hide();
+        } else {
+            alert('请选择要删除的元素');
+        }
+    });
+})</script>
+
+
+</body></html>
