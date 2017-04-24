@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)file:///C:/Users/Tan.Ck/Downloads/jq22649.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>div模拟select（支持多选）-jq22.com</title>
+<script src="./js/jquery.min.js"></script>
+<style>
+@charset "utf-8";
+	* {
+	font-size:14px;
+	border:0;
+	margin:0;
+	padding:0;
+}
+body {
+	font-family:'微软雅黑';
+	margin:0 auto;
+	min-width:980px;
+}
+ul {
+	display:block;
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+li {
+	display:block;
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+img {
+	border:0;
+}
+dl,dt,dd,span {
+	margin:0;
+	padding:0;
+	display:block;
+}
+a,a:focus {
+	text-decoration:none;
+	color:#000;
+	outline:none;
+	blr:expression(this.onFocus=this.blur());
+}
+a:hover {
+	color:#66667F;
+	text-decoration:none;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+cite {
+	font-style:normal;
+}
+h2,h3 {
+	font-weight:normal;
+}
+input {
+	margin:0;
+	padding:0;
+	outline:none;
+}
+.clearfix {
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}
+/* 下拉多选 */
+.dropdown {
+	width:380px;
+	margin-top:20px;
+	margin-left:5px;
+	position:relative;
+}
+.dropdown-toggle {
+	display:inline-block;
+	width:380px;
+	height:36px;
+	color:#333;
+	padding-left:10px;
+	padding-right:40px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	text-align:left;
+	border-radius:2px;
+	background:#fff url(../images/down.png) right no-repeat;
+	background-position:358px 13px;
+	border:1px #ccc solid;
+}
+.dropdown-menu {
+	background:#fff;
+	border:1px #ccc solid;
+	margin-top:0;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	position:absolute;
+	left:0;
+}
+.dropdown-menu ul {
+	width:358px;
+	padding:10px;
+}
+.dropdown-menu .scroll {
+	height:300px;
+	overflow-y:auto;
+	position:relative;
+}
+.dropdown-menu ul li {
+	width:auto;
+	text-align:left;
+	height:32px;
+	margin-top:10px;
+	border-bottom:1px #ccc dashed;
+}
+.dropdown-menu ul li a {
+	text-decoration:none;
+	color:#666;
+}
+.dropdown-menu ul li input {
+	width:14px;
+	height:14px;
+	display:inline-block;
+	border:none;
+	margin-right:5px;
+	padding-left:0;
+}
+.okcheck {
+	width:100%;
+	display:block;
+	height:32px;
+	line-height:32px;
+	background:#f3f3f3;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	z-index:888;
+}
+.okcheck a {
+	text-decoration:none;
+	font-size:14px;
+	margin-right:10px;
+}
+.okcheck .count {
+	color:#666;
+}
+.okcheck .count i {
+	color:red;
+	font-size:14px;
+}
+.a1 {
+	float:left;
+	margin-left:20px;
+}
+.a1 span {
+	display:inline-block;
+}
+.a2 {
+	float:left;
+}
+</style>
+</head>
+<body>
+<div class="dropdown">
+    <button class="dropdown-toggle" type="button">请选择评审专家</button>
+    <div class="dropdown-menu" style="display: none;">
+        <div class="scroll">
+            <ul>
+                <li class="option">
+                    <input id="selectall" class="allcase" name="all" type="checkbox" value="all">
+                    <a href="file:///C:/Users/Tan.Ck/Downloads/jq22649.html#">全部</a>
+                </li>
+                <li class="option">
+                    <input class="case" name="checkbox" type="checkbox" value="">
+                    <a href="file:///C:/Users/Tan.Ck/Downloads/jq22649.html#">选项一</a>
+                </li>
+                <li class="option">
+                    <input class="case" name="checkbox" type="checkbox" value="">
+                    <a href="file:///C:/Users/Tan.Ck/Downloads/jq22649.html#">选项二</a>
+                </li>
+                <li class="option">
+                    <input class="case" name="checkbox" type="checkbox" value="">
+                    <a href="file:///C:/Users/Tan.Ck/Downloads/jq22649.html#">选项三</a>
+                </li>
+                <li class="option">
+                    <input class="case" name="checkbox" type="checkbox" value="">
+                    <a href="file:///C:/Users/Tan.Ck/Downloads/jq22649.html#">选项四</a>
+                </li>
+                <li class="option">
+                    <input class="case" name="checkbox" type="checkbox" value="">
+                    <a href="file:///C:/Users/Tan.Ck/Downloads/jq22649.html#">选项五</a>
+                </li>
+
+            </ul>
+        </div>
+        <p class="okcheck">
+            <a class="a1" href="file:///C:/Users/Tan.Ck/Downloads/jq22649.html#">确定<span class="count">(共选择&nbsp;<i id="count">0</i>&nbsp;项)</span></a>
+            <a class="a2" href="file:///C:/Users/Tan.Ck/Downloads/jq22649.html#">取消</a>
+        </p>
+    </div><script>
+$(document).ready(function() {
+    //显示\隐藏下拉菜单
+    $(".dropdown-menu").hide();
+    $(".dropdown-toggle").click(function() {
+        $(".dropdown-menu").toggle();
+    })
+    $("input:checkbox[name='all']").click(function() {
+        if ($(this).attr("checked") == true) {
+            $("input:checkbox[name='checkbox']").attr("checked", true);
+        } else {
+            $("input:checkbox[name='checkbox']").attr("checked", false);
+        }
+    });
+    $(".okcheck .a1").click(function() {
+        var str = $("input:checkbox[name='checkbox']:checked").next().text();
+
+        //var str = '';
+        $("input:checkbox[name='checkbox']:checked").each(function() {
+            str = str + ";";
+        });
+        if (str == "") {
+            alert("你还没有选择，请至少选择一项！");
+            return;
+        }
+        $(".dropdown-toggle").html(str);
+        $(".dropdown-menu").hide();
+    })
+    $(".okcheck .a2").click(function() {
+        $(".dropdown-menu").hide();
+    })
+
+    //统计选中的数量
+    $("input:checkbox[name='all']").change(function() {
+        var len = 0;
+        $("input:checkbox[name='all']:checked").each(function() {
+            len = $(".case").length;
+        });
+        $("#count").html(len);
+    });
+
+    $(".case").change(function() {
+        var i = 0;
+        $("input:checkbox[name='checkbox']:checked").each(function() {
+            i++;
+        });
+        $("#count").html(i);
+    });
+
+
+    //全选和取消全选	  	
+    $("#selectall").click(function() {
+        $("input[name='checkbox']").prop('checked', this.checked);
+    });
+    $("input[name='checkbox']").click(function() {
+        if ($("input[name='checkbox']").length == $("input[name='checkbox']:checked").length) {
+            $("#selectall").prop("checked", "checked");
+        } else {
+            $("#selectall").removeAttr("checked");
+        }
+    });
+
+});</script>
+
+
+</div></body></html>
