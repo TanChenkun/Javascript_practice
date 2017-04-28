@@ -1,0 +1,147 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>滚动简单特效-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+* {
+	margin:0px;
+	padding:0;
+}
+.box {
+	width:600px;
+	float:left;
+	margin:100px;
+}
+.top {
+	width:578px;
+	height:30px;
+	line-height:30px;
+	font-size:12px;
+	padding-left:10px;
+	padding-right:10px;
+	border:solid 1px #666;
+}
+.pre,.next {
+	cursor:pointer;
+}
+.red {
+	width:128px;
+	height:96px;
+	background:red;
+}
+.green {
+	width:128px;
+	height:96px;
+	background:green;
+}
+.blue {
+	width:128px;
+	height:96px;
+	background:blue;
+}
+.bottom {
+	width:598px;
+	height:160px;
+	border:solid 1px #666;
+	border-top:none;
+	position:relative;
+	overflow:hidden;
+}
+.bottom_move {
+	width:2500px;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+.bottom_move ul {
+	list-style-type:none;
+	float:left;
+}
+.bottom_move ul li {
+	float:left;
+	margin:10px 3px 0;
+	padding:8px;
+	display:inline;
+}
+</style>
+</head>
+<body>
+<div class="box" >
+	<div class="top">
+		<span class="pre">上一栏</span>
+		<span class="next">下一栏</span>
+	</div>
+	<div class="bottom">
+	<div class="bottom_move">
+		<ul>
+			<li><div class="red">1</div></li>
+			<li><div class="red">1</div></li>
+			<li><div class="red">1</div></li>
+			<li><div class="red">1</div></li>
+			<li><div class="green">2</div></li>
+			<li><div class="green">2</div></li>
+			<li><div class="green">2</div></li>
+			<li><div class="green">2</div></li>	
+			<li><div class="blue">3</div></li>
+			<li><div class="blue">3</div></li>
+			<li><div class="blue">3</div></li>
+			
+		</ul>
+
+	</div>
+	</div>
+
+</div>
+<script>
+$(function() {
+    var page = 1;
+    var i = 4; //一个版面4张图片
+    $('span.next').click(function() {
+        var $parent = $(this).parents('div.box'); //获取祖先节点
+        var $bottom_move = $parent.find('div.bottom_move'); //找到视频展示区域
+        var $bottom = $parent.find('div.bottom'); //找到视频展示区域外层div
+        var botton_width = $bottom.width(); //找到外层div宽度
+        var len = $bottom_move.find('li').length; //获取图片个数
+        var page_count = Math.ceil(len / i); ////只要不是整数，就往大的方向取最小的整数
+        if (!$bottom_move.is(":animated")) {
+            if (page == page_count) {
+                $bottom_move.animate({
+                    left: '0px'
+                }, 'normal');
+                page = 1;
+            } else {
+                $bottom_move.animate({
+                    left: '-=' + botton_width
+                }, 'normal');
+                page++;
+            }
+        }
+    })
+
+    $('span.pre').click(function() {
+        var $parent = $(this).parents('div.box'); //获取祖先节点
+        var $bottom_move = $parent.find('div.bottom_move'); //找到视频展示区域
+        var $bottom = $parent.find('div.bottom'); //找到视频展示区域外层div
+        var botton_width = $bottom.width(); //找到外层div宽度
+        var len = $bottom_move.find('li').length; //获取图片个数
+        var page_count = Math.ceil(len / i); ////只要不是整数，就往大的方向取最小的整数
+        if (!$bottom_move.is(":animated")) {
+            if (page == 1) {
+                $bottom_move.animate({
+                    left: '-=' + botton_width * (page_count - 1)
+                }, 'normal');
+                page = page_count;
+
+            } else {
+                $bottom_move.animate({
+                    left: '+=' + botton_width
+                }, 'normal');
+                page--;
+            }
+        }
+    })
+});</script>
+</body>
+</html>
