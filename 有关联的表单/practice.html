@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type ="text/javascript">
+function showCitys()
+{
+	var date =[[],["武汉","赤壁","襄阳"],["岳阳","益阳","长沙"],["广州","深圳","中山"]];
+	var selectNode = document.getElementById("selectNode");       //得到省份的节点
+	var selectIndex = selectNode.selectedIndex;                 //获取省份的索引值
+
+	var cityDates = date[selectIndex];
+    var cityNode = document.getElementById("city");              //得到城市的节点	
+	/*var cityChild = cityNode.childNodes;                           //得到城市节点的孩子节点
+	for(var i = 0;i<cityChild.length;)                          //清空城市孩子节点
+	   cityNode.removeChild(cityChild[i]); */
+	   cityNode.options.length=1;
+	 for(var i=0;i<cityDates.length;i++)
+	 {
+		var option=document.createElement("option");
+		option.innerHTML = cityDates[i];
+		cityNode.appendChild(option);
+     }
+	}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<select onchange="showCitys()" id="selectNode">
+<option>省份</option>
+<option>湖北</option>
+<option>湖南</option>
+<option>广东</option>
+</select>
+<select id="city">
+<option>城市</option>
+</select>
+</body>
+</html>
