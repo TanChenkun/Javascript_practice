@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>原创tab标签页-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<style>
+.display-none {
+	display:none;
+}
+.tab ul {
+	list-style-type:none;
+	overflow:hidden;
+}
+.tab ul li {
+	float:left;
+}
+.tab ul li {
+	border-radius:0;
+	padding:5px 0;
+	margin-right:5px;
+	width:150px;
+	text-align:center;
+	background-color:#f8f8f8;
+	border-bottom:3px solid #eee;
+}
+.tab ul li a {
+	display:inline-block;
+	width:150px;
+	text-decoration:none;
+	color:rgb(50,50,50);
+	cursor:pointer;
+}
+.tab ul li.active {
+	background-color:#99b9e2;
+	border-bottom:3px solid #81a2cd
+}
+.tab ul li.active a {
+	color:#fff;
+}
+</style>
+</head>
+<body>
+<div class="tab">
+    <ul>
+        <li class="active">
+            <a href="javascript:;" class="cpc">
+		  CPC
+	      </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="cpm">
+		  CPM
+	      </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="cpt">
+		  CPT
+	      </a>
+        </li>
+    </ul>
+</div>
+<div>
+    <div class="cpc-div">
+        <p>
+            CPC<br/>最近时间精力，所以内容我尽可能精简，一些以往可能会展示的部分截图的今天从省了。本文最最重要的内容其实不是讲rgba，而是介绍如何在IE下也 能实现半透明的背景效果，婆妈的话就不说了，直奔主题。
+        </p>
+    </div>
+    <div class="cpm-div display-none">
+        <p>
+            CPM<br/>最近时间精力，所以内容我尽可能精简，一些以往可能会展示的部分截图的今天从省了。本文最最重要的内容其实不是讲rgba，而是介绍如何在IE下也 能实现半透明的背景效果，婆妈的话就不说了，直奔主题。
+        </p>
+    </div>
+    <div class="cpt-div display-none">
+        <p>
+            CPT<br/>最近时间精力，所以内容我尽可能精简，一些以往可能会展示的部分截图的今天从省了。本文最最重要的内容其实不是讲rgba，而是介绍如何在IE下也 能实现半透明的背景效果，婆妈的话就不说了，直奔主题。
+        </p>
+    </div>
+</div><script>
+//tab切换公用方法
+function tabChange(clicks) { //参数为tab点击的a标签，注意布局
+    clicks.on("click", function() {
+        var cl = $(this).attr("class");
+        $(this).parent().addClass("active");
+        $(this).parent().siblings().removeClass("active");
+        $("." + cl + "-div").siblings().hide();
+        $("." + cl + "-div").fadeIn();
+    })
+}
+tabChange($(".tab a"));</script>
+</body>
+</html>
