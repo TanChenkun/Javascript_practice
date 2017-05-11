@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>纯 CSS3 开门见山效果-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+.door {
+	width:300px;
+	height:300px;
+	border:1px solid gray;
+	margin:50px auto;
+	background-color:skyblue;
+	position:relative;
+	perspective:500px;
+	transform-style:preserve-3d;
+}
+/* 门 */
+		.left {
+	width:50%;
+	position:absolute;
+	height:100%;
+	background:brown;
+	transition:all 2s;
+	transform-origin:left center;
+	/* 设置 反面看不到 */
+			backface-visibility:hidden;
+}
+.right {
+	width:50%;
+	position:absolute;
+	right:0;
+	height:100%;
+	background:brown;
+	transition:all 2s;
+	transform-origin:right center;
+	/* 设置 反面看不到 */
+			backface-visibility:hidden;
+}
+/* 使用伪元素 制作 门把手 */
+		.left::before {
+	content:'';
+	position:absolute;
+	width:15px;
+	height:15px;
+	border-radius:50%;
+	right:10px;
+	top:50%;
+	transform:translateY(-7.5px);
+	background:orange;
+}
+.right::before {
+	content:'';
+	position:absolute;
+	width:15px;
+	height:15px;
+	border-radius:50%;
+	left:10px;
+	top:50%;
+	transform:translateY(-7.5px);
+	background:orange;
+}
+/* 鼠标移动上去以后 打开 */
+		.door:hover .left {
+	transform:rotateY(-135deg);
+}
+.door:hover .right {
+	transform:rotateY(135deg);
+}
+</style>
+</head>
+<body>
+<div class="door">
+    <div class='left'></div>
+    <div class="right"></div>
+</div><script>
+</script>
+</body>
+</html>
