@@ -1,0 +1,297 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>导航点击左右箭头滑动-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+body {
+	background:#eee;
+}
+a:hover {
+	text-decoration:none;
+}
+ul {
+	padding:0px;
+	margin:0px;
+}
+li {
+	list-style:none;
+}
+.box {
+	margin-top:50px;
+	position:relative;
+	padding:0px 130px 0px 40px;
+}
+.c-menu {
+	height:50px;
+	overflow:hidden;
+	width:100%;
+	margin-right:60px;
+}
+.list-group {
+	margin-bottom:0px;
+}
+.btn {
+	display:inline-block;
+	float:right
+}
+.c-item {
+	border-radius:0px !important;
+	float:left;
+	display:inline-block;
+}
+.c-item a {
+	float:left;
+	padding:16px 30px;
+	color:#fff;
+	background:#18191a;
+	display:inline-block;
+}
+.c-item a:hover {
+	background:#f01400;
+}
+.c-item .icon {
+	margin-top:4px;
+	margin-left:3px;
+	float:right;
+}
+.btn-group {
+	position:absolute;
+	top:6px;
+	right:10px;
+	width:116px;
+}
+.btn {
+	background:#18191a;
+	color:#fff;
+	margin-left:1px;
+	outline:none;
+	padding:8px 12px;
+	border:1px solid #18191a;
+}
+.btn:hover,.btn:focus {
+	background:#18191a;
+	color:#fff;
+	outline:none;
+}
+#left {
+	float:left;
+}
+#right {
+	float:right;
+	display:none;
+}
+.dropdown {
+	background:#18191a;
+	position:absolute;
+	top:50px;
+	display:none;
+	width:135px;
+}
+.dropdown li {
+	padding:10px;
+	color:#fff;
+}
+.dropdown li:hover {
+	background:#f01400;
+	padding:10px;
+	color:#fff;
+}
+</style>
+</head>
+<body>
+<div class="box">
+    <div class="btn-group">
+        <button id="right" type="button" class="btn">向右</button>
+        <button id="left" type="button" class="btn">向左</button>
+    </div>
+    <div class="c-menu">
+        <ul id="c-ul">
+            <li class="c-item"><a>Action1↓</a>
+                <ul class="dropdown">
+                    <li>index1</li>
+                    <li>index1</li>
+                    <li>index1</li>
+                    <li>index1</li>
+                    <li>index1</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action2↓</a>
+                <ul class="dropdown">
+                    <li>index2</li>
+                    <li>index2</li>
+                    <li>index2</li>
+                    <li>index2</li>
+                    <li>index2</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action3↓</a>
+                <ul class="dropdown">
+                    <li>index3</li>
+                    <li>index3</li>
+                    <li>index3</li>
+                    <li>index3</li>
+                    <li>index3</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action4↓</a>
+                <ul class="dropdown">
+                    <li>index4</li>
+                    <li>index4</li>
+                    <li>index4</li>
+                    <li>index4</li>
+                    <li>index4</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action5↓</a>
+                <ul class="dropdown">
+                    <li>index5</li>
+                    <li>index5</li>
+                    <li>index5</li>
+                    <li>index5</li>
+                    <li>index5</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action6↓</a>
+                <ul class="dropdown">
+                    <li>index6</li>
+                    <li>index6</li>
+                    <li>index6</li>
+                    <li>index6</li>
+                    <li>index6</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action7↓</a>
+                <ul class="dropdown">
+                    <li>index7</li>
+                    <li>index7</li>
+                    <li>index7</li>
+                    <li>index7</li>
+                    <li>index7</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action8↓</a>
+                <ul class="dropdown">
+                    <li>index8</li>
+                    <li>index8</li>
+                    <li>index8</li>
+                    <li>index8</li>
+                    <li>index8</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action9↓</a>
+                <ul class="dropdown">
+                    <li>index9</li>
+                    <li>index9</li>
+                    <li>index9</li>
+                    <li>index9</li>
+                    <li>index9</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action10↓</a>
+                <ul class="dropdown">
+                    <li>index10</li>
+                    <li>index10</li>
+                    <li>index10</li>
+                    <li>index10</li>
+                    <li>index10</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action11↓</a>
+                <ul class="dropdown">
+                    <li>index11</li>
+                    <li>index11</li>
+                    <li>index11</li>
+                    <li>index11</li>
+                    <li>index11</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action12↓</a>
+                <ul class="dropdown">
+                    <li>index12</li>
+                    <li>index12</li>
+                    <li>index12</li>
+                    <li>index12</li>
+                    <li>index12</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action13↓</a>
+                <ul class="dropdown">
+                    <li>index13</li>
+                    <li>index13</li>
+                    <li>index13</li>
+                    <li>index13</li>
+                    <li>index13</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action14↓</a>
+                <ul class="dropdown">
+                    <li>index14</li>
+                    <li>index14</li>
+                    <li>index14</li>
+                    <li>index14</li>
+                    <li>index14</li>
+                </ul>
+            </li>
+            <li class="c-item"><a>Action15↓</a>
+                <ul class="dropdown">
+                    <li>index15</li>
+                    <li>index15</li>
+                    <li>index15</li>
+                    <li>index15</li>
+                    <li>index15</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div><script>
+$(function() {
+    var $li = $("#c-ul > li");
+    var screenWidth = $(window).width(); //屏幕的宽度
+    var index = 0;
+    var oneWidth = 0; //移动的宽度 
+    var scrollSum = 0; //卷进去的总宽度
+    var liSum = 0; //li总长度
+
+    $("#right").click(function() {
+        $("#left").show();
+        index = index - 1;
+        oneWidth = oneWidth + $li.eq(index).width();
+        $("#c-ul").stop(true, false).animate({
+            "margin-left": oneWidth
+        }, 500);
+        scrollSum = scrollSum - $li.eq(index).width();
+        if (index <= 0) {
+            $("#right").hide();
+            return false;
+        }
+    })
+    for (var i = 0; i < $li.length; i++) {
+        liSum = $li.eq(i).width() + 2 + liSum;
+    }
+    $("#left").click(function() {
+
+        $("#right").show();
+        oneWidth = oneWidth - $li.eq(index).width();
+        $("#c-ul").stop(true, false).animate({
+            "margin-left": oneWidth
+        }, 500);
+        scrollSum = scrollSum + $li.eq(index).width();
+        index = index + 1;
+        if (liSum - scrollSum < screenWidth - 170) {
+            $("#left").hide();
+            return false;
+        }
+    })
+    $("li").each(function() {
+        $(this).mouseover(function() {
+            $(this).find(".dropdown").stop(true, false).slideDown()
+        })
+        $(this).mouseout(function() {
+            $(this).find(".dropdown").stop(true, false).slideUp()
+        })
+    })
+})</script>
+</body>
+</html>
