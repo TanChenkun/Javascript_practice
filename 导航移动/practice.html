@@ -1,0 +1,81 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>导航条 移动效果-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<style>
+* {
+	box-sizing:border-box;
+}
+nav {
+	width:600px;
+	margin:auto;
+	height:30px;
+	position:relative;
+	background-color:orange;
+	display:flex;
+}
+nav span {
+	display:block;
+	height:30px;
+	line-height:30px;
+	padding:0 10px;
+	float:left;
+	text-align:center;
+	cursor:pointer;
+}
+nav span {
+	z-index:1;
+}
+nav .bg_red {
+	background-color:red;
+	color:white;
+	width:52px;
+	z-index:10;
+	margin-right:1px;
+}
+#leave {
+	position:absolute;
+	left:0px;
+	height:30px;
+	background-color:red;
+	z-index:1;
+}
+nav .red {
+	background-color:red;
+	color:white;
+}
+</style>
+</head>
+<body>
+<nav>
+    <div id="leave"></div>
+    <span class="bg_red">首页</span>
+    <span>百家</span>
+    <span>财经</span>
+    <span>娱乐</span>
+    <span>体育</span>
+    <span>互联网</span>
+    <span>时尚</span>
+    <span>汽车</span>
+    <span>国内</span>
+    <span>个性推荐</span>
+</nav><script>
+$('#leave').css('width', $('.bg_red').width());
+$('span.bg_red').siblings().hover(function(ev) {
+    var w = $(this).position().left;
+    var s = $(this).index() - 1;
+    var bg_width = $(this).innerWidth();
+    $('#leave').stop().animate({
+        left: w,
+        width: bg_width
+    }, 500, function() {})
+}, function() {
+    $('#leave').stop().animate({
+        left: '0',
+        width: $('.bg_red').width()
+    }, 500);
+})</script>
+</body>
+</html>
