@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery下拉菜单鼠标移入效果-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<style>
+.list {
+	width:200px;
+	height:400px;
+	margin-top:20px;
+	float:left;
+	position:relative;
+	border:1px solid black;
+}
+dt {
+	font-size:20px;
+	font-family:微软雅黑;
+	font-weight:900;
+	padding:10px;
+}
+dl {
+	border-bottom:1px solid black;
+}
+dd a {
+	font:15px;
+	font-family:微软雅黑;
+	font-weight:900;
+	padding:10px;
+	display:inline-block;
+	text-decoration:none;
+}
+</style>
+</head>
+<body>
+<div class="list">
+    <div>
+        <dl>
+            <dt>水果</dt>
+            <dd><a href="#">苹果</a></dd>
+            <dd><a href="#">香蕉</a></dd>
+            <dd><a href="#">橘子</a></dd>
+            <dd><a href="#">西瓜</a></dd>
+            <dd><a href="#">葡萄</a></dd>
+        </dl>
+        <dl>
+            <dt>蔬菜</dt>
+            <dd><a href="#">白菜</a></dd>
+            <dd><a href="#">黄瓜</a></dd>
+            <dd><a href="#">萝卜</a></dd>
+            <dd><a href="#">土豆</a></dd>
+            <dd><a href="#">西红柿</a></dd>
+        </dl>
+        <dl>
+            <dt>海鲜</dt>
+            <dd><a href="#">螃蟹</a></dd>
+            <dd><a href="#">皮皮虾</a></dd>
+            <dd><a href="#">小龙虾</a></dd>
+        </dl>
+    </div>
+</div><script>
+$(function() {
+    $('.list dd').hide();
+    $('.list dt').mouseenter(function() {
+        $(this).parent().find('dd').removeClass('menu_chioce');
+        $('.menu_chioce').slideUp();
+        $(this).parent().find('dd').slideToggle();
+        $(this).parent().find('dd').addClass('menu_chioce');
+    });
+});</script>
+</body>
+</html>
