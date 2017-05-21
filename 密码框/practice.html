@@ -1,0 +1,90 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>模仿手机端密码输入-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<style>
+* {
+        padding: 0px;
+        margin: 0px;
+    } 
+    .pwd-box{  
+        width:310px;
+        height: 48px;
+        position: relative;  
+        border: 1px solid #9f9fa0;  
+        border-radius: 3px;  
+        overflow:hidden;
+        margin: 10px auto;
+    }  
+    .pwd-box input[type="number"]{  
+        width: 100%;  
+        height: 100%;  
+        /*color: transparent;  */
+        /*letter-spacing 属性增加或减少字符间的空白*/
+        /*letter-spacing: 35px;*/
+        position: absolute;  
+        top: 0;  
+        left: 0;  
+        border: none;  
+        font-size: 18px;  
+        opacity: 0;  
+        z-index: 1;       
+        outline: none;
+    }
+    .fake-box {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row;
+    }
+    .fake-box input{
+        flex: 1;
+        width: 100%;  
+        height: 100%;  
+        border: none;  
+        border-right: 1px solid #e5e5e5;  
+        text-align: center;  
+        font-size: 30px;
+        float: left;  
+    }  
+    .fake-box input:nth-last-child(1){  
+        border:none;  
+    } </style>
+</head>
+<body>
+输入数字哦
+<div class="pwd-box">  
+    <input type="number" maxlength="6" class="pwd-input" id="pwd-input" autofocus>  
+    <div class="fake-box">  
+        <input type="password" readonly="">  
+        <input type="password" readonly="">  
+        <input type="password" readonly="">  
+        <input type="password" readonly="">  
+        <input type="password" readonly="">  
+        <input type="password" readonly="">  
+    </div>  
+</div>  <script>
+ $("#pwd-input").on("input", function() {  
+        // trim(): 去两边空格的方法；
+        var pwd = $(this).val().trim();  
+        for (var i = 0; i < pwd.length; i++) {  
+            $(".fake-box input").eq(i).val(pwd[i]);  
+        }  
+        $(".fake-box input").each(function() {  
+            var index = $(this).index();  
+            if ( index >= pwd.length ) {  
+                $(this).val("");  
+            }  
+        });  
+        if (pwd.length == 6) {  
+            //执行其他操作 
+            setTimeout(function () {
+               alert('订单已提交') 
+           },300)
+            
+        }  
+    }); </script>
+</body>
+</html>
