@@ -1,0 +1,19 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery文字闪烁效果-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+</style>
+</head>
+<body>
+<div class="name">hello,my name is Lisa</div><script>
+function index(){
+	$('.name').css('color','#03a9f4');  //默认值
+	setTimeout(" $('.name').css('color','#fF0000')",100); //第一次闪烁
+	setTimeout( "$('.name').css('color','#ccc')",200); //第二次闪烁
+};
+window.setInterval(index, 400); //让index 多久循环一次 </script>
+</body>
+</html>
