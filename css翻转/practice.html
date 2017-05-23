@@ -1,0 +1,143 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css3翻转切换-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+.wrap{
+    width:300px;
+    height:280px;
+    margin:0 auto;
+}
+.block-login {
+	width:100%;
+	height:280px;
+	transform-style:preserve-3d;
+        cursor: pointer;
+}
+.block-page1{
+    background:url('http://www.jq22.com/img/cs/500x500-2.png') no-repeat center;
+}
+.block-page2{
+        background:url('http://www.jq22.com/img/cs/500x500-3.png') no-repeat center;
+}
+.block-zc {
+	display:none;
+}
+/*css3翻转动画*/
+.in {
+	-webkit-animation-timing-function:ease-out;
+	-webkit-animation-duration:350ms;
+	animation-timing-function:ease-out;
+	animation-duration:350ms;
+}
+.out {
+	-webkit-animation-timing-function:ease-in;
+	-webkit-animation-duration:225ms;
+	animation-timing-function:ease-in;
+	animation-duration:225ms;
+}
+.flip {
+	backface-visibility:hidden;
+	-webkit-backface-visibility:hidden;
+	-webkit-transform:translateX(0);
+	transform:translateX(0);
+}
+.flip.out {
+	-webkit-transform:rotateY(-90deg) scale(.9);
+	-webkit-animation-name:flipouttoleft;
+	-webkit-animation-duration:175ms;
+	transform:rotateY(-90deg) scale(.9);
+	animation-name:flipouttoleft;
+	animation-duration:175ms;
+}
+.flip.in {
+	-webkit-animation-name:flipintoright;
+	-webkit-animation-duration:225ms;
+	animation-name:flipintoright;
+	animation-duration:225ms;
+}
+.flip.out.reverse {
+	-webkit-transform:rotateY(90deg) scale(.9);
+	-webkit-animation-name:flipouttoright;
+	transform:rotateY(90deg) scale(.9);
+	animation-name:flipouttoright;
+}
+.flip.in.reverse {
+	-webkit-animation-name:flipintoleft;
+	animation-name:flipintoleft;
+}
+@-webkit-keyframes flipouttoleft {
+	from {
+	-webkit-transform:rotateY(0);
+}
+to {
+	-webkit-transform:rotateY(-90deg) scale(.9);
+}
+}@keyframes flipouttoleft {
+	from {
+	transform:rotateY(0);
+}
+to {
+	transform:rotateY(-90deg) scale(.9);
+}
+}@-webkit-keyframes flipouttoright {
+	from {
+	-webkit-transform:rotateY(0);
+}
+to {
+	-webkit-transform:rotateY(90deg) scale(.9);
+}
+}@keyframes flipouttoright {
+	from {
+	transform:rotateY(0);
+}
+to {
+	transform:rotateY(90deg) scale(.9);
+}
+}@-webkit-keyframes flipintoleft {
+	from {
+	-webkit-transform:rotateY(-90deg) scale(.9);
+}
+to {
+	-webkit-transform:rotateY(0);
+}
+}@keyframes flipintoleft {
+	from {
+	transform:rotateY(-90deg) scale(.9);
+}
+to {
+	transform:rotateY(0);
+}
+}@-webkit-keyframes flipintoright {
+	from {
+	-webkit-transform:rotateY(90deg) scale(.9);
+}
+to {
+	-webkit-transform:rotateY(0);
+}
+}@keyframes flipintoright {
+	from {
+	transform:rotateY(90deg) scale(.9);
+}
+to {
+	transform:rotateY(0);
+}
+}/*css3翻转动画*/
+       </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="block-login flip list block-page1 in"></div>
+    <div class="block-login flip list block-page2 out"></div>
+</div><script>
+$('.flip').click(function() {
+    var oA = $(this);
+    oA.addClass("out").removeClass("in");
+    setTimeout(function() {
+        oA.siblings().addClass("in").removeClass("out").css('display', 'block').siblings().css('display', 'none');
+    }, 225);
+});</script>
+</body>
+</html>
