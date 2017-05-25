@@ -1,0 +1,322 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>七彩开关按钮-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<style>
+/*红色*/
+.Ellipse1{
+	width:50px;
+	height:30px;
+	border-radius:16px;
+	background-color:#ccc;
+	transition:0.3s;
+	margin-bottom:10px;
+}
+.circle1{
+	width:29px;
+	height:29px;
+	background-color:#fff;
+	border-radius:50%;
+	box-shadow:0px 1px 5px rgba(0,0,0,.5);
+	transition:0.3s;
+	position:relative;
+	left:0px;
+}
+.circle1:hover{
+	transform:scale(1.2);
+	box-shadow:0px 1px 8px rgba(0,0,0,.5);
+}
+/*蓝色*/
+.Ellipse2{
+	width:50px;
+	height:30px;
+	border-radius:16px;
+	background-color:#ccc;
+	transition:0.3s;
+	margin-bottom:10px;
+}
+.circle2{
+	width:29px;
+	height:29px;
+	background-color:#fff;
+	border-radius:50%;
+	box-shadow:0px 1px 5px rgba(0,0,0,.5);
+	transition:0.3s;
+	position:relative;
+	left:0px;
+}
+.circle2:hover{
+	transform:scale(1.2);
+	box-shadow:0px 1px 8px rgba(0,0,0,.5);
+}
+/*绿色*/
+.Ellipse3{
+	width:50px;
+	height:30px;
+	border-radius:16px;
+	background-color:#ccc;
+	transition:0.3s;
+	margin-bottom:10px;
+}
+.circle3{
+	width:29px;
+	height:29px;
+	background-color:#fff;
+	border-radius:50%;
+	box-shadow:0px 1px 5px rgba(0,0,0,.5);
+	transition:0.3s;
+	position:relative;
+	left:0px;
+}
+.circle3:hover{
+	transform:scale(1.2);
+	box-shadow:0px 1px 8px rgba(0,0,0,.5);
+}
+/*橙色*/
+.Ellipse4{
+	width:50px;
+	height:30px;
+	border-radius:16px;
+	background-color:#ccc;
+	transition:0.3s;
+	margin-bottom:10px;
+}
+.circle4{
+	width:29px;
+	height:29px;
+	background-color:#fff;
+	border-radius:50%;
+	box-shadow:0px 1px 5px rgba(0,0,0,.5);
+	transition:0.3s;
+	position:relative;
+	left:0px;
+}
+.circle4:hover{
+	transform:scale(1.2);
+	box-shadow:0px 1px 8px rgba(0,0,0,.5);
+}
+/*黄色*/
+.Ellipse5{
+	width:50px;
+	height:30px;
+	border-radius:16px;
+	background-color:#ccc;
+	transition:0.3s;
+	margin-bottom:10px;
+}
+.circle5{
+	width:29px;
+	height:29px;
+	background-color:#fff;
+	border-radius:50%;
+	box-shadow:0px 1px 5px rgba(0,0,0,.5);
+	transition:0.3s;
+	position:relative;
+	left:0px;
+}
+.circle5:hover{
+	transform:scale(1.2);
+	box-shadow:0px 1px 8px rgba(0,0,0,.5);
+}
+/*紫色*/
+.Ellipse6{
+	width:50px;
+	height:30px;
+	border-radius:16px;
+	background-color:#ccc;
+	transition:0.3s;
+	margin-bottom:10px;
+}
+.circle6{
+	width:29px;
+	height:29px;
+	background-color:#fff;
+	border-radius:50%;
+	box-shadow:0px 1px 5px rgba(0,0,0,.5);
+	transition:0.3s;
+	position:relative;
+	left:0px;
+}
+.circle6:hover{
+	transform:scale(1.2);
+	box-shadow:0px 1px 8px rgba(0,0,0,.5);
+}
+/*青色*/
+.Ellipse7{
+	width:50px;
+	height:30px;
+	border-radius:16px;
+	background-color:#ccc;
+	transition:0.3s;
+	margin-bottom:10px;
+}
+.circle7{
+	width:29px;
+	height:29px;
+	background-color:#fff;
+	border-radius:50%;
+	box-shadow:0px 1px 5px rgba(0,0,0,.5);
+	transition:0.3s;
+	position:relative;
+	left:0px;
+}
+.circle7:hover{
+	transform:scale(1.2);
+	box-shadow:0px 1px 8px rgba(0,0,0,.5);
+}</style>
+</head>
+<body>
+<ol>
+  <!--红色-->
+  <li> 红色：
+    <div class="Ellipse1">
+      <div class="circle1"></div>
+    </div>
+  </li>
+  <!--蓝色-->
+  <li> 蓝色：
+    <div class="Ellipse2">
+      <div class="circle2"></div>
+    </div>
+  </li>
+  <!--绿色-->
+  <li> 绿色：
+    <div class="Ellipse3">
+      <div class="circle3"></div>
+    </div>
+  </li>
+  <li> 橙色：
+    <div class="Ellipse4">
+      <div class="circle4"></div>
+    </div>
+  </li>
+  <li> 黄色：
+    <div class="Ellipse5">
+      <div class="circle5"></div>
+    </div>
+  </li>
+  <li> 紫色：
+    <div class="Ellipse6">
+      <div class="circle6"></div>
+    </div>
+  </li>
+  <li> 青色：
+    <div class="Ellipse7">
+      <div class="circle7"></div>
+    </div>
+  </li>
+</ol>
+<!----><script>
+//红色
+$(function() {
+$('.circle1').click(function(){
+	var left = $(this).css('left');
+	left = parseInt(left);
+	if(left == 0){
+		$(this).css('left','30px'),
+		$(this).css('background-color','#FF0000'),
+		$('.Ellipse1').css('background-color','#FF0000');
+	}
+	else{
+		$(this).css('left','0px'),
+		$(this).css('background-color','#fff'),
+		$('.Ellipse1').css('background-color','#ccc');
+	}
+    });
+	//蓝色
+	$('.circle2').click(function(){
+	var left = $(this).css('left');
+	left = parseInt(left);
+	if(left == 0){
+		$(this).css('left','30px'),
+		$(this).css('background-color','#63B8FF'),
+		$('.Ellipse2').css('background-color','#63B8FF');
+	}
+	else{
+		$(this).css('left','0px'),
+		$(this).css('background-color','#fff'),
+		$('.Ellipse2').css('background-color','#ccc');
+	}
+    });
+	//绿色
+	$('.circle3').click(function(){
+	var left = $(this).css('left');
+	left = parseInt(left);
+	if(left == 0){
+		$(this).css('left','30px'),
+		$(this).css('background-color','#C0FF3E'),
+		$('.Ellipse3').css('background-color','#C0FF3E');
+	}
+	else{
+		$(this).css('left','0px'),
+		$(this).css('background-color','#fff'),
+		$('.Ellipse3').css('background-color','#ccc');
+	}
+    });
+	//橙色
+	$('.circle4').click(function(){
+	var left = $(this).css('left');
+	left = parseInt(left);
+	if(left == 0){
+		$(this).css('left','30px'),
+		$(this).css('background-color','#DAA520'),
+		$('.Ellipse4').css('background-color','#DAA520');
+	}
+	else{
+		$(this).css('left','0px'),
+		$(this).css('background-color','#fff'),
+		$('.Ellipse4').css('background-color','#ccc');
+	}
+    });
+	//黄色
+	$('.circle5').click(function(){
+	var left = $(this).css('left');
+	left = parseInt(left);
+	if(left == 0){
+		$(this).css('left','30px'),
+		$(this).css('background-color','#EEEE00'),
+		$('.Ellipse5').css('background-color','#EEEE00');
+	}
+	else{
+		$(this).css('left','0px'),
+		$(this).css('background-color','#fff'),
+		$('.Ellipse5').css('background-color','#ccc');
+	}
+    });
+	//紫色
+	$('.circle6').click(function(){
+	var left = $(this).css('left');
+	left = parseInt(left);
+	if(left == 0){
+		$(this).css('left','30px'),
+		$(this).css('background-color','#D15FEE'),
+		$('.Ellipse6').css('background-color','#D15FEE');
+	}
+	else{
+		$(this).css('left','0px'),
+		$(this).css('background-color','#fff'),
+		$('.Ellipse6').css('background-color','#ccc');
+	}
+    });
+	//青色
+	$('.circle7').click(function(){
+	var left = $(this).css('left');
+	left = parseInt(left);
+	if(left == 0){
+		$(this).css('left','30px'),
+		$(this).css('background-color','#BBFFFF'),
+		$('.Ellipse7').css('background-color','#BBFFFF');
+	}
+	else{
+		$(this).css('left','0px'),
+		$(this).css('background-color','#fff'),
+		$('.Ellipse7').css('background-color','#ccc');
+	}
+    });
+});
+
+</script>
+</body>
+</html>
