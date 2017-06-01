@@ -1,0 +1,158 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用jquery写京东轮播图，没写插件-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+	* {
+	padding:0;
+	margin:0;
+}
+ul {
+	list-style:none;
+}
+img {
+	vertical-align:middle;
+	border:none;
+}
+.wrap {
+	width:790px;
+	height:340px;
+	margin:0px auto;
+	position:relative;
+}
+.wrap .img li {
+	position:absolute;
+	left:0;
+	top:0;
+	display:none;
+}
+.wrap .num {
+	position:absolute;
+	left:0;
+	bottom:20px;
+	font-size:0;
+	text-align:center;
+	width:100%;
+}
+.wrap .num li {
+	width:20px;
+	height:20px;
+	display:inline-block;
+	background:#666;
+	text-align:center;
+	line-height:20px;
+	color:#fff;
+	border-radius:50%;
+	font-size:16px;
+	margin:0 3px;
+	cursor:pointer;
+}
+.wrap .num li.active {
+	background:#a00;
+}
+.wrap .btn {
+	position:absolute;
+	top:50%;
+	margin-top:-30px;
+	width:30px;
+	height:60px;
+	background:rgba(0,0,0,.3);
+	color:#fff;
+	text-align:center;
+	line-height:60px;
+	font-size:40px;
+	display:none;
+	cursor:pointer;
+}
+.wrap .btn-left {
+	left:0;
+}
+.wrap .btn-right {
+	right:0;
+}
+.wrap:hover .btn {
+	display:block;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+    <ul class="img">
+        <li>
+            <a href=""><img src="https://img13.360buyimg.com/da/jfs/t5863/243/1124081808/83929/17f753a1/5923aa9cNadda4624.jpg" /></a>
+        </li>
+        <li>
+            <a href=""><img src="https://img1.360buyimg.com/da/jfs/t5107/238/2603995678/99283/95a26cea/591c1c40N2cb0bf9c.jpg" /></a>
+        </li>
+        <li>
+            <a href=""><img src="https://img1.360buyimg.com/da/jfs/t5347/58/2258216290/100280/a7eea35a/59196712N8610ad1e.jpg" /></a>
+        </li>
+        <li>
+            <a href=""><img src="https://img1.360buyimg.com/da/jfs/t5536/307/2327359355/198531/ac762fbe/59196e52N214ab88d.jpg" /></a>
+        </li>
+        <li>
+            <a href=""><img src="https://img20.360buyimg.com/da/jfs/t5500/59/2669702928/113809/98b7a2b6/591d43c3Ne8fdd8ed.jpg" /></a>
+        </li>
+        <li>
+            <a href=""><img src="https://img20.360buyimg.com/da/jfs/t5611/175/926963013/146089/6f8e451e/59228824N319c5576.jpg" /></a>
+        </li>
+    </ul>
+    <ul class="num">
+        <!--<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>-->
+    </ul>
+    <div class="btn btn-left"><</div>
+    <div class="btn btn-right">></div>
+</div><script>
+$(function() {
+    var size = $('.img li').size();
+    for (var i = 1; i < size + 1; i++) {
+        var li = '<li>' + i + '</li>';
+        $('.num').append(li);
+    }
+    $('.img li').first().show();
+    $('.num li').first().addClass('active');
+    /*手动轮播*/
+    $('.num li').mouseover(function() {
+        $(this).addClass('active').siblings().removeClass('active');
+        var index = $(this).index();
+        i = index;
+        $('.img li').eq(index).stop().fadeIn(300).siblings().stop().fadeOut(300);
+    })
+    /*核心向左运动函数*/
+    function moveL() {
+        i--;
+        if (i == -1) i = size - 1;
+        $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+        $('.img li').eq(i).fadeIn(300).siblings().fadeOut(300);
+    };
+    /*自动播放*/
+    var i = 0;
+    var t = setInterval(move, 1500);
+    /*核心向右运动函数*/
+    function move() {
+        i++;
+        if (i == size) i = 0;
+        $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+        $('.img li').eq(i).fadeIn(300).siblings().fadeOut(300);
+    };
+    $('.wrap').hover(function() {
+        clearInterval(t);
+    }, function() {
+        t = setInterval(move, 1500);
+    })
+    $('.btn-left').click(function() {
+        moveL();
+    })
+    $('.btn-right').click(function() {
+        move();
+    })
+})</script>
+</body>
+</html>
